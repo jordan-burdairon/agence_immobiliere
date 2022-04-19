@@ -1,0 +1,7 @@
+{
+  "biens": [
+      {"id": 1, "title": "Charmante maisonette", "description": "Petite maisonette très bien situé entre la mer et la montagne", "surface": 225, "rooms": 12, "bedrooms": 4, "floor": 0, "price": 1000000, "heat": 1, "city": "Montpellier", "address": "Rue Gambetta, 125", "postal_code": "34000", "sold": 0, "created_at": "new Date" },
+      {"id": 2, "title": "Superbe duplex", "description": "Si vous avez la tete entre les nuages, ce duplex est fait pour vous", "surface": 110, "rooms": 4, "bedrooms": 2, "floor": 4, "price": 400000, "heat": 1, "city": "Toulouse", "address": "Rue Mimont, 18", "postal_code": "31555", "sold": 0, "created_at": "new Date" },
+      {"id": 3, "title": "Sous-sol moisi", "description": "Si vous n'avez pas une thune mais besoin de 4 murs et 1 toit", "surface": 52, "rooms": 1, "bedrooms": 0, "floor": -1, "price": 80000, "heat": 0, "city": "Cannes", "address": "Boulevard Carnot, 452", "postal_code": "06400", "sold": 0, "created_at": "new Date" }
+  ]
+}
