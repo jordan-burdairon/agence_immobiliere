@@ -1,4 +1,5 @@
 export interface IBien {
+    id: number;
     title: string;
     description: string;
     surface: number;
@@ -12,5 +13,7 @@ export interface IBien {
     postal_code: string;
     sold: boolean;
     created_at: Date;
+    image_front: File;
+    type: string;
 
 }

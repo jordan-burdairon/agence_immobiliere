@@ -1,0 +1,76 @@
+<div class="container p-4">
+    <h2>Ajouter un bien</h2>
+    <form [formGroup]="bienForm" (ngSubmit)="addBien()">
+        <div class="form-group mt-3 col-4">
+            <label for="title">Titre du bien</label>
+            <input class="form-control" id="title" type="text" formControlName="title" placeholder="Titre du bien">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="type">Type de bien</label>
+            <select class="form-control" formControlName="type" id="type">
+                <option value="Appartement">Appartement</option>
+                <option value="Maison">Maison</option>
+                <option value="Duplex">Duplex</option>
+                <option value="Garage">Garage</option>
+                <option value="Studio">Studio</option>
+                <option value="Terrain">Terrain</option>
+            </select>
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="description">Description</label>
+            <input class="form-control" id="description" type="text" formControlName="description" placeholder="Description">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="surface">Surface</label>
+            <input class="form-control" id="surface" type="number" formControlName="surface" placeholder="Surface">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="rooms">N° de pièces</label>
+            <input class="form-control" id="rooms" type="number" formControlName="rooms" placeholder="N° de pièces">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="bedrooms">N° de chambres</label>
+            <input class="form-control" id="bedrooms" type="number" formControlName="bedrooms" placeholder="N° de chambres">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="floor">Etage</label>
+            <input class="form-control" id="floor" type="number" formControlName="floor" placeholder="Etage">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="price">Prix</label>
+            <input class="form-control" id="price" type="number" formControlName="price" placeholder="Prix">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="heat">Chauffage</label>
+            <select class="form-control" formControlName="heat" id="heat">
+                <option value="mazout">Mazout</option>
+                <option value="gaz">Gaz</option>
+                <option value="electrique">Electrique</option>
+                <option value="noChauffage">Pas de chauffage</option>
+            </select>
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="city">Ville</label>
+            <input class="form-control" id="city" type="text" formControlName="city" placeholder="Ville">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="address">Adresse</label>
+            <input class="form-control" id="address" type="text" formControlName="address" placeholder="Adresse">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="postal_code">Code postal</label>
+            <input class="form-control" id="postal_code" type="text" formControlName="postal_code" placeholder="Code postal">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="created_at">Date de creation</label>
+            <input class="form-control" id="created_at" type="date" formControlName="created_at">
+        </div>
+        <div class="form-group mt-3 col-4">
+            <label for="image_front">Image de présentation</label>
+            <input class="form-control" id="image_front" type="file" (change)="onchange($event)">
+        </div>
+        
+        <input class="btn btn-primary mt-4" type="submit" value="Ajouter le bien">
+    
+    </form>
+</div>

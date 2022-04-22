@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IBien } from '../models/bien';
+import { IBien } from '../models/IBien';
 import { BienService } from '../services/bien.service';
 
 @Component({
@@ -8,12 +8,18 @@ import { BienService } from '../services/bien.service';
 })
 export class BienComponent implements OnInit {
 
+  p: number = 1;
   biens : IBien[];
+  collection: string[] = [];
+  search : string = '';
 
-  constructor(private bienService : BienService) { }
+  constructor(private _bienService : BienService) {
+    for (let i = 1; i <= 100; i++) {
+      this.collection.push(`item ${i}`);
+    }
+   }
 
   ngOnInit(): void {
-      this.bienService.getAll().subscribe(result => this.biens = result);
+      this._bienService.getAll().subscribe(result => this.biens = result);
   }
-
 }

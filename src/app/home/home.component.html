@@ -6,3 +6,23 @@
                 Fugiat inventore quos est veniam atque iure mollitia repudiandae eos molestiae aliquam!</p>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="card m-3" style="width: 18rem;" *ngFor="let b of biens | slice:0:4" >
+                    <img class="card-img-top mt-2" id="image_front" [src]="b.image_front">
+                <div class="card-body" >
+                  <h5 class="card-title" >{{b.title}}</h5>
+                  <p class="card-text">{{b.description}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{b.rooms}} pièces - {{b.bedrooms}} <i class="fa fa-bed"></i></li>
+                  <li class="list-group-item">{{b.surface}} m²</li>
+                  <li class="list-group-item">{{b.price | number: ''}} €</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link btn btn-primary" [routerLink]="['/show', b.id]">+ d'infos</a>
+                </div>
+              </div>
+        </div>
+    </div>
+

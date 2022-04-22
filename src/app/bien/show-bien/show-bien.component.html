@@ -1,0 +1,56 @@
+<div class="card m-5" style="width: 50%;" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{bien.image_front}}" class="img-fluid rounded-start">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{bien.title}}</h5>
+          <p class="card-text m-2">{{bien.address}}</p>
+          <p class="card-text m-2">{{bien.postal_code}} - {{bien.city}}</p>
+          <p class="card-text m-2">{{bien.surface}}</p>
+          <p class="card-text m-2">{{bien.bedrooms}}</p>
+          <p class="card-text m-2">{{bien.rooms}}</p>
+          <p class="card-text mt-5"><b style="font-size: 35px; color: red;">{{bien.price | number: ''}} €</b></p>   
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <button class="btn btn-primary">Contactez l'agence</button>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Nom de famille">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Prenom">
+        </div>
+        <div class="col">
+          <textarea type="textarea" class="form-control" placeholder="Votre message"></textarea>
+        </div>
+        <div class="col">
+          <input type="email" class="form-control" placeholder="Votre email">
+        </div>
+      </div>
+  </div>
+
+  <div class="container m-5">
+      <h5 class="m-2">Description</h5>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, inventore voluptates maiores libero quas fugit tempora distinctio corporis alias expedita numquam aliquid modi dolorum ab asperiores id delectus aperiam rerum.
+      Minus repellendus earum debitis fugiat fugit aliquid quam esse voluptatem unde consequatur iste cum adipisci, numquam modi expedita id vel dolorem voluptatum ea magnam? Aliquam quibusdam minus sapiente fugit atque.</p>
+  </div>
+
+  <div class="container m-5">
+      <div class="info-bien">
+        <h5 class="m-2">Toutes les infos</h5>
+        <p>Etage du bien: {{bien.floor}}</p>
+        <p>Nombre de pièces: {{bien.rooms}}</p>
+        <p>Nombre de chambres: {{bien.bedrooms}}</p>
+        <p>Surface totale: {{bien.surface}}</p>
+        <p>Type de chauffage: {{bien.heat}}</p>
+        <p>Etage du bien: {{bien.floor}}</p>
+        <p>Etage du bien: {{bien.floor}}</p>
+        <p>Etage du bien: {{bien.floor}}</p>
+      </div>
+  </div>
