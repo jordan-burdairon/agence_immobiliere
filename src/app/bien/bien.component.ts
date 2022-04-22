@@ -12,6 +12,7 @@ export class BienComponent implements OnInit {
   biens : IBien[];
   collection: string[] = [];
   search : string = '';
+  type : any[];
 
   constructor(private _bienService : BienService) {
     for (let i = 1; i <= 100; i++) {

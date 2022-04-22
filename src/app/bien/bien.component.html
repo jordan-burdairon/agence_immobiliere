@@ -3,7 +3,9 @@
     <div class="input-group mb-3">
         <span class="input-group-text"></span>
         <input class="form-control" id="search" type="text" [(ngModel)]="search" placeholder="Rechercher par titre">
-        <select class="form-control" id="search" type="text" [(ngModel)]="search" placeholder="Rechercher par titre">
+      </div>
+      <div class="input-group mb-3">
+        <select class="form-control" id="type" type="text" [(ngModel)]="type" placeholder="Rechercher par type">
           <option value="Appartement">Appartement</option>
           <option value="Maison">Maison</option>
           <option value="Duplex">Duplex</option>
@@ -11,7 +13,7 @@
           <option value="Studio">Studio</option>
           <option value="Terrain">Terrain</option>
         </select>
-    </div>
+      </div>
     <div class="card m-4" style="width: 18rem;" *ngFor="let b of biens | listFilter : search | paginate: { itemsPerPage: 2, currentPage: p}">
         <img class="card-img-top mt-2" [src]="b.image_front">
         <div class="card-body">

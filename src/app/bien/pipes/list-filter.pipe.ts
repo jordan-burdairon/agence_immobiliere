@@ -9,4 +9,8 @@ export class ListFilterPipe implements PipeTransform {
     return value.filter(item =>  item.title.toLowerCase().includes(search.toLowerCase()))
   }
 
+  typefilter(value: any[], type: string) {
+    return value.filter(item => item.type)
+  }
+
 }
