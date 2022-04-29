@@ -1,33 +1,42 @@
 <h3 class="title m-4">Liste des biens disponibles</h3>
 <div class="row">
-    <div class="input-group mb-3">
-        <span class="input-group-text"></span>
-        <input class="form-control" id="search" type="text" [(ngModel)]="search" placeholder="Rechercher par titre">
+    <div class="input-group mb-3">        
+        <input class="form-control m-4" id="search" type="text" [(ngModel)]="search" placeholder="Rechercher par titre">
       </div>
+
       <div class="input-group mb-3">
-        <select class="form-control" id="type" type="text" [(ngModel)]="type" placeholder="Rechercher par type">
+        <select class="form-control m-4" id="type" type="text" [(ngModel)]="type" placeholder="Rechercher par type">
+          <option value="" selected> --Tous les biens-- </option>
           <option value="Appartement">Appartement</option>
           <option value="Maison">Maison</option>
           <option value="Duplex">Duplex</option>
-          <option value="Garage">Garage</option>
           <option value="Studio">Studio</option>
+          <option value="Penthouse">Penthouse</option>
+          <option value="Garage">Garage</option>
           <option value="Terrain">Terrain</option>
         </select>
+        
       </div>
-    <div class="card m-4" style="width: 18rem;" *ngFor="let b of biens | listFilter : search | paginate: { itemsPerPage: 2, currentPage: p}">
-        <img class="card-img-top mt-2" [src]="b.image_front">
+    <div class="card m-4" style="width: 18rem;" *ngFor="let b of biens | listFilter : search | typeFilter: type | paginate: { itemsPerPage: 4, currentPage: p}">
+        <img class="card-img-top mt-2" [src]="b.image_front | toImage">
         <div class="card-body">
           <h5 class="card-title">{{b.title}}</h5>
           <p class="card-text">{{b.description}}</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{b.rooms}} pièces - {{b.bedrooms}} <i class="fa fa-bed"></i></li>
-          <li class="list-group-item">{{b.surface}} m2</li>
+          <li class="list-group-item"> {{b.bedrooms}} <i class="fa fa-bed"></i></li>
+          <li class="list-group-item">
+            <ng-container *ngIf="b.rooms > 1; else singulier">
+              {{b.rooms}} pièces
+            </ng-container>
+            <ng-template #singulier class="list-group-item"> {{b.rooms}} pièce</ng-template>
+          </li>
+          <li class="list-group-item">{{b.surface}} m²</li>
           <li class="list-group-item">{{b.price | number: ''}} €</li>
         </ul>
         <div class="card-body">
           <a  class="card-link btn btn-primary" [routerLink]="['/show', b.id]">+ d'infos</a>
-          <a  class="card-link btn btn-warning" [routerLink]="['/edit', b.id]">Edit</a>
+          <a  class="card-link btn btn-warning" *ngIf="session.isLogged" [routerLink]="['/edit', b.id]">Edit</a>
         </div>
       </div>
       <pagination-controls (pageChange)="p = $event"></pagination-controls>

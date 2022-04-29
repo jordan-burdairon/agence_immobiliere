@@ -1,56 +1,90 @@
-<div class="card m-5" style="width: 50%;" >
+<div class="card m-5" style="width: 75%;" >
     <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{bien.image_front}}" class="img-fluid rounded-start">
+      <div class="col-xl-7 order-xl-0">
+        <img [src]="bien.image_front | toImage" class="img-fluid rounded-start">
       </div>
-      <div class="col-md-8">
+      <div class="col-xl-5 order-xl-1">
         <div class="card-body">
           <h5 class="card-title">{{bien.title}}</h5>
           <p class="card-text m-2">{{bien.address}}</p>
           <p class="card-text m-2">{{bien.postal_code}} - {{bien.city}}</p>
-          <p class="card-text m-2">{{bien.surface}}</p>
-          <p class="card-text m-2">{{bien.bedrooms}}</p>
-          <p class="card-text m-2">{{bien.rooms}}</p>
-          <p class="card-text mt-5"><b style="font-size: 35px; color: red;">{{bien.price | number: ''}} €</b></p>   
+          <p class="card-text m-2">{{bien.surface}} m²</p>
+          <p class="card-text m-2">{{bien.bedrooms}} <i class="fa fa-bed"></i></p>
+          <li class="card-text m-2">
+            <ng-container *ngIf="bien.rooms > 1; else singulier">
+              {{bien.rooms}} pièces
+            </ng-container>
+            <ng-template #singulier class="card-text m-2"> {{bien.rooms}} pièce</ng-template>
+          </li>
+          <p class="card-text mt-5"><b style="font-size: 35px">{{bien.price | number: ''}} €</b></p>   
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container">
-      <button class="btn btn-primary">Contactez l'agence</button>
-      <div class="row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Nom de famille">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Prenom">
-        </div>
-        <div class="col">
-          <textarea type="textarea" class="form-control" placeholder="Votre message"></textarea>
-        </div>
-        <div class="col">
-          <input type="email" class="form-control" placeholder="Votre email">
-        </div>
+  <div class="container" style="border: solid 2px;">
+    <button class="btn btn-primary mb-4" (click)="visible = !visible">Contactez l'agence</button>
+    <form class="row" *ngIf="visible" [formGroup]="messageForm" (ngSubmit)="submitMessage()">
+      <div class="col">
+        <input type="text" class="col-md-3" placeholder="Nom de famille" formControlName="lastname">
+        <input type="text" class="col-md-3" placeholder="Prenom" formControlName="firstname">
+        <input type="email" class="col-md-3" placeholder="Votre email" formControlName="email">
+        <input type="textarea" class="col-md-9" placeholder="Votre message" formControlName="message">  
+        <input type="submit" class="btn btn-success m-2" value="Demande de contact">      
       </div>
-  </div>
+      
+
+      
+    </form>    
+</div>
 
   <div class="container m-5">
-      <h5 class="m-2">Description</h5>
+      <h5 class="m-4">Description du bien</h5>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, inventore voluptates maiores libero quas fugit tempora distinctio corporis alias expedita numquam aliquid modi dolorum ab asperiores id delectus aperiam rerum.
       Minus repellendus earum debitis fugiat fugit aliquid quam esse voluptatem unde consequatur iste cum adipisci, numquam modi expedita id vel dolorem voluptatum ea magnam? Aliquam quibusdam minus sapiente fugit atque.</p>
   </div>
 
   <div class="container m-5">
+    <h5 class="m-4">Informations generales</h5>
       <div class="info-bien">
-        <h5 class="m-2">Toutes les infos</h5>
-        <p>Etage du bien: {{bien.floor}}</p>
+        
         <p>Nombre de pièces: {{bien.rooms}}</p>
         <p>Nombre de chambres: {{bien.bedrooms}}</p>
-        <p>Surface totale: {{bien.surface}}</p>
+        <p>Surface totale: {{bien.surface}} m²</p>
         <p>Type de chauffage: {{bien.heat}}</p>
-        <p>Etage du bien: {{bien.floor}}</p>
-        <p>Etage du bien: {{bien.floor}}</p>
-        <p>Etage du bien: {{bien.floor}}</p>
+        <p>Adresse: {{bien.address}}</p>
+        <p>Ville: {{bien.postal_code}} {{bien.city}}</p>          
+        <div>
+          <p *ngIf="bien.floor == 0;else hauteur">Etage du bien: Rez de chaussée</p>          
+        </div>
+        <ng-template #hauteur><p>Etage du bien: {{bien.floor}}</p> </ng-template>
+        <p>Type de bien: {{bien.type}}</p>
       </div>
   </div>
+
+
+<div class="container" *ngIf="session.isLogged">
+  <table class="table table-striped table-dark" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom de famille</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Message</th>
+        <th scope="col">email</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let m of messages">
+      <tr>
+        <th scope="row">1</th>
+        <td>{{m.lastname}}</td>
+        <td>{{m.firstname}}</td>
+        <td>{{m.message}}</td>
+        <td>{{m.email}}</td>
+        <td><button class="btn btn-danger ml-2"><a href="mailto:{{m.email}}?&subject=Votre demande d'infos pour {{bien.title}}" style="color: black; text-decoration: none;">Contacter</a></button></td>
+        
+      </tr>  
+    </tbody>
+  </table>
+</div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { IBien } from 'src/app/models/IBien';
 import { BienService } from 'src/app/services/bien.service';
+
+declare var toastr: any;
 
 @Component({
   templateUrl: './add-bien.component.html',
@@ -28,7 +28,7 @@ export class AddBienComponent implements OnInit {
       city : [null, [Validators.required]],
       address : [null, [Validators.required]],
       postal_code : [null, [Validators.required]],
-      created_at : [null, [Validators.required]],
+      //created_at : [null, [Validators.required]],
       image_front : [null, [Validators.required]],
       type : [null, [Validators.required]]
     });
@@ -37,9 +37,9 @@ export class AddBienComponent implements OnInit {
 
   addBien() {
     if(this.bienForm.valid) {
-      console.log("c'est valide");
-      let bien = {...this.bienForm.value, created_at : new Date(this.bienForm.value.created_at)};
+      let bien = {...this.bienForm.value };
       this._bienService.addBien(bien).subscribe(() => {
+        toastr.success("Nouveau bien enregistré");
         this._route.navigateByUrl('bien')
       });
     }

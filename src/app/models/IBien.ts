@@ -7,7 +7,7 @@ export interface IBien {
     bedrooms: number;
     floor: number;
     price: number;
-    heat: number;
+    heat: string;
     city: string;
     address: string;
     postal_code: string;

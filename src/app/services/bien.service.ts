@@ -16,20 +16,21 @@ export class BienService {
   constructor(private _http : HttpClient, _router : Router) { }
 
   getAll() : Observable<IBien[]> {
-    return this._http.get<IBien[]>(environment.api_url + "biens");
+    return this._http.get<IBien[]>(environment.api_url + "api/biens");
   }
 
 
   addBien(bien : IBien): Observable<IBien> {
-    return this._http.post<IBien>(environment.api_url + "biens" , bien);
+    return this._http.post<IBien>(environment.api_url + "api/add" , bien);
+  
   }
 
   getBienById(id : number): Observable<IBien> {
-    return this._http.get<IBien>(environment.api_url + 'biens/' + id);
+    return this._http.get<IBien>(environment.api_url + 'api/bien/' + id);
   }
 
   editBien(id : number, bien: IBien) : Observable<IBien> {
-    return this._http.put<IBien>(environment.api_url + 'biens/' + id, bien);
+    return this._http.put<IBien>(environment.api_url + 'api/biens/' + id, bien);
   }
 
   

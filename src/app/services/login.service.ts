@@ -1,20 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
+import { Auth } from '../models/auth.models';
 import { IUser } from '../models/IUser';
+import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private _user : IUser[] = [{login : "admin", password: "admin"}];
+  constructor(private _http: HttpClient) { }
 
-  constructor() { }
-
-  connectUser(login : string) {
-    return this._user.find(user => user.login == login)
-  }
-
-  disconnectUser() : undefined {
-    return undefined;
+  public login(form: Login): Observable<Auth> {
+    return this._http.post<Auth>('http://localhost:8000/api/login_check', form)
   }
 }

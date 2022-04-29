@@ -41,6 +41,7 @@ export class EditBienComponent implements OnInit {
       created_at: [null, [Validators.required]],
       image_front: [null, [Validators.required]],
       sold: [null, [Validators.required]],
+      type: [null, [Validators.required]]
     });
   }
 
@@ -48,7 +49,7 @@ export class EditBienComponent implements OnInit {
     let id = this._activeRoute.snapshot.params['id'];
     this._bienService.editBien(id, this.bienForm.value).subscribe( {
       next :(b) => {
-        toastr.success('Ok');
+        toastr.success('Modifications enregistrées');
         this._router.navigate(['/bien']);
       }, error: () => {
         toastr.error('Error');
