@@ -25,10 +25,4 @@ export class BienComponent implements OnInit {
   ngOnInit(): void {
       this._bienService.getAll().subscribe(result => this.biens = result);
   }
-
-  vendu(){
-    if(this.isSold == true) {
-      
-    }
-  }
 }

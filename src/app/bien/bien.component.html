@@ -17,8 +17,8 @@
         </select>
         
       </div>
-    <div class="card m-4" style="width: 18rem;" *ngFor="let b of biens | listFilter : search | typeFilter: type | paginate: { itemsPerPage: 4, currentPage: p}">
-        <img class="card-img-top mt-2" [src]="b.image_front | toImage">
+    <div class="card m-2" style="width: 18rem;" *ngFor="let b of biens | listFilter : search | typeFilter: type | paginate: { itemsPerPage: 4, currentPage: p}">
+        <img class="card-img-top mt-2" style="max-height: 150px;" [src]="b.image_front | toImage">
         <div class="card-body">
           <h5 class="card-title">{{b.title}}</h5>
           <p class="card-text">{{b.description}}</p>

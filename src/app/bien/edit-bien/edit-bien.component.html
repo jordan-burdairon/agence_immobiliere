@@ -49,10 +49,21 @@
         </div>
         
         <div class="row">
-            <label for="sold" id="sold">Vendu?</label>
-            <input class="col-md-4 m-2" id="sold" type="boolean" formControlName="sold" placeholder="Vendu?">
+            <div class="form-check">
+                <p>Est ce que le bien a été vendu?</p>
+                <input class="form-check-input" type="radio" value="true" formControlName="sold">
+                <label class="form-check-label" for="true">
+                  Oui
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="false" checked formControlName="sold" checked>
+                <label class="form-check-label" for="false">
+                  Non
+                </label>
+              </div>
             <label for="image_front" id="image_front">Image </label>
-            <input class="col-md-4 m-2" id="image_front" type="file"[src]="" formControlName="image_front">
+            <input class="col-md-4 m-2" id="image_front" type="file">
         </div>        
         
         <input class="btn btn-primary mt-4" type="submit" value="Editer le bien">

@@ -1,7 +1,7 @@
 <div class="card m-5" style="width: 75%;" >
     <div class="row g-0">
       <div class="col-xl-7 order-xl-0">
-        <img [src]="bien.image_front | toImage" class="img-fluid rounded-start">
+        <img [src]="bien.image_front | toImage" class="img-fluid rounded-start" style="width: 100%;">
       </div>
       <div class="col-xl-5 order-xl-1">
         <div class="card-body">
@@ -22,21 +22,24 @@
     </div>
   </div>
 
-  <div class="container" style="border: solid 2px;">
-    <button class="btn btn-primary mb-4" (click)="visible = !visible">Contactez l'agence</button>
-    <form class="row" *ngIf="visible" [formGroup]="messageForm" (ngSubmit)="submitMessage()">
-      <div class="col">
-        <input type="text" class="col-md-3" placeholder="Nom de famille" formControlName="lastname">
-        <input type="text" class="col-md-3" placeholder="Prenom" formControlName="firstname">
-        <input type="email" class="col-md-3" placeholder="Votre email" formControlName="email">
-        <input type="textarea" class="col-md-9" placeholder="Votre message" formControlName="message">  
-        <input type="submit" class="btn btn-success m-2" value="Demande de contact">      
-      </div>
-      
-
-      
-    </form>    
-</div>
+  <div class="contact ml-5">
+    <div class="card">
+        <div class="row">
+          <button class="btn btn-primary mb-4" (click)="visible = !visible">Contactez l'agence</button>
+        <form class="row" *ngIf="visible" [formGroup]="messageForm" (ngSubmit)="submitMessage()">
+          <div class="col">
+            <input type="text" class="col-md-3" placeholder="Nom de famille" formControlName="lastname">
+            <input type="text" class="col-md-3" placeholder="Prenom" formControlName="firstname">
+            <input type="email" class="col-md-3" placeholder="Votre email" formControlName="email">
+            <input type="textarea" class="col-md-9" placeholder="Votre message" formControlName="message">  
+            <input type="submit" class="btn btn-success m-2" value="Demande de contact">      
+          </div>
+        </form>    
+        </div>
+        
+    </div>
+  </div>
+  
 
   <div class="container m-5">
       <h5 class="m-4">Description du bien</h5>

@@ -8,8 +8,6 @@ import { ShowBienComponent } from './show-bien/show-bien.component';
 import { EditBienComponent } from './edit-bien/edit-bien.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ListFilterPipe } from '../shared/pipes/list-filter.pipe';
-import { TypeFilterPipe } from '../shared/pipes/type-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -29,5 +27,6 @@ import { SharedModule } from '../shared/shared.module';
     NgxPaginationModule,
     SharedModule
   ]
+  
 })
 export class BienModule { }

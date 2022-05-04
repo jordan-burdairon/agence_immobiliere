@@ -45,6 +45,7 @@ export class AddBienComponent implements OnInit {
     }
     else {
       console.log("c'est pas valide"),
+      toastr.error("Veuillez remplir les champs");
       this.bienForm.markAllAsTouched();
     }
   }

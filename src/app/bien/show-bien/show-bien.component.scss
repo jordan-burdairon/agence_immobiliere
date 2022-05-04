@@ -2,10 +2,6 @@ h5 {
     color: goldenrod;
 }
 
-ul {
-    list-style: none;
-}
-
 li {
     list-style: none;
 }
@@ -18,5 +14,11 @@ li {
 p {
     border-bottom: 1px solid black;
     width: 60%;
+    }
 }
+
+.contact {
+    display: flex;
+    justify-content: flex-end;
+    width: 35%;
 }

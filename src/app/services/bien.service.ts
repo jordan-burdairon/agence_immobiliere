@@ -30,9 +30,11 @@ export class BienService {
   }
 
   editBien(id : number, bien: IBien) : Observable<IBien> {
-    return this._http.put<IBien>(environment.api_url + 'api/biens/' + id, bien);
+    return this._http.put<IBien>(environment.api_url + 'api/bien/' + id, bien);
   }
 
-  
+  getLastFour() : Observable<IBien[]> {
+    return this._http.get<IBien[]>(environment.api_url + "api/bien");
+  }
    
 }

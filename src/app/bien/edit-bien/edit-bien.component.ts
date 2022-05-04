@@ -14,6 +14,7 @@ export class EditBienComponent implements OnInit {
   bien: IBien;
   bienForm: FormGroup;
   //id: number;
+  sold: boolean = false;
 
   constructor(
     private _bienService: BienService,
@@ -47,12 +48,13 @@ export class EditBienComponent implements OnInit {
 
   editBien() {
     let id = this._activeRoute.snapshot.params['id'];
+    
     this._bienService.editBien(id, this.bienForm.value).subscribe( {
       next :(b) => {
         toastr.success('Modifications enregistrées');
         this._router.navigate(['/bien']);
       }, error: () => {
-        toastr.error('Error');
+        toastr.error('Erreur');
       } });
   }
 }

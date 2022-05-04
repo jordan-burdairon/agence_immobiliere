@@ -17,8 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private _bienService : BienService) { }
 
   ngOnInit(): void {
-    this._bienService.getAll().subscribe(result => this.biens = result);
+    this._bienService.getLastFour().subscribe(result => this.biens = result);
   }
+
+
 
 
 
