@@ -5,7 +5,7 @@
       </div>
       <div class="col-xl-5 order-xl-1">
         <div class="card-body">
-          <h5 class="card-title">{{bien.title}}</h5>
+          <h2 class="card-title"><strong>{{bien.title}}</strong> </h2>
           <p class="card-text m-2">{{bien.address}}</p>
           <p class="card-text m-2">{{bien.postal_code}} - {{bien.city}}</p>
           <p class="card-text m-2">{{bien.surface}} m²</p>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="contact m-5">
-    <div class="card">
+    <div class="card" style="border: none;">
         <div class="row">
           <button class="btn btn-primary mb-4" (click)="visible = !visible">Contactez l'agence</button>
         <form class="row" *ngIf="visible" [formGroup]="messageForm" (ngSubmit)="submitMessage()">
