@@ -20,5 +20,13 @@ p {
 .contact {
     display: flex;
     justify-content: flex-end;
-    width: 35%;
+    width: 75%;
+}
+
+.card {
+    border: none !important;
+}
+
+.row {
+    justify-content: flex-end;
 }
